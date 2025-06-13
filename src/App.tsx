@@ -22,7 +22,7 @@ function App() {
       const query = location.trim().replace(/\s+/g, '+');
       const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${import.meta.env.VITE_WEATHER_API_KEY}&q=${query}`);
       if (!response.ok){
-        throw new Error("Failed to fetch from the API!");
+        throw new Error("Failed to fetch from the API! Try some other location!");
       }
       
       const data = await response.json();
@@ -59,7 +59,7 @@ function App() {
           
       </div>
       <hr className='hr'/>
-      <br /><br />
+      
       <div className="stats">
         <p className="location">{WeatherStats && `Location: ${WeatherStats.location.name}`}</p>
         <p className="temperatureCelsius">{WeatherStats && `Temperature in Celsius: ${WeatherStats.current.temp_c}`}</p>
